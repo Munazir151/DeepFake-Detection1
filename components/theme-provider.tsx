@@ -6,12 +6,9 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
   const [theme, setTheme] = useState<"light" | "dark" | null>(null)
 
   useEffect(() => {
-    // Check if user has a saved theme preference
+    // Always default to light mode, but respect user's saved preference
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null
-    
-    // Check system preference
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
-    const initialTheme = savedTheme || (prefersDark ? "dark" : "light")
+    const initialTheme = savedTheme || "light"
     
     setTheme(initialTheme)
     applyTheme(initialTheme)
@@ -42,8 +39,11 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
       <script
         dangerouslySetInnerHTML={{
           __html: `
-            if (localStorage.getItem('theme') === 'dark' || 
-                (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            // Always remove dark mode class by default (light mode)
+            document.documentElement.classList.remove('dark')
+            
+            // Only apply dark mode if user has explicitly saved it
+            if (localStorage.getItem('theme') === 'dark') {
               document.documentElement.classList.add('dark')
             }
           `,
@@ -61,8 +61,7 @@ export function useTheme() {
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
-    const initialTheme = savedTheme || (prefersDark ? "dark" : "light")
+    const initialTheme = savedTheme || "light"
     setTheme(initialTheme)
   }, [])
 
