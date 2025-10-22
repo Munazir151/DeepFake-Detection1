@@ -46,7 +46,7 @@ export default function Header() {
           <a href="#features" className="text-foreground/70 hover:text-foreground transition">
             Features
           </a>
-          <a href="#detection-process" className="text-foreground/70 hover:text-foreground transition">
+          <a href="#detection-demo" className="text-foreground/70 hover:text-foreground transition">
             How It Works
           </a>
           <a href="#demo" className="text-foreground/70 hover:text-foreground transition">
@@ -69,7 +69,15 @@ export default function Header() {
             ))}
           </Button>
           <Button variant="outline">Sign In</Button>
-          <Button className="bg-primary hover:bg-primary/90">Get Started</Button>
+          <Button 
+            className="bg-primary hover:bg-primary/90"
+            onClick={() => {
+              const demoSection = document.getElementById("demo")
+              demoSection?.scrollIntoView({ behavior: "smooth" })
+            }}
+          >
+            Get Started
+          </Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -116,7 +124,16 @@ export default function Header() {
               <Button variant="outline" className="flex-1 bg-transparent">
                 Sign In
               </Button>
-              <Button className="flex-1 bg-primary hover:bg-primary/90">Get Started</Button>
+              <Button 
+                className="flex-1 bg-primary hover:bg-primary/90"
+                onClick={() => {
+                  const demoSection = document.getElementById("demo")
+                  demoSection?.scrollIntoView({ behavior: "smooth" })
+                  setIsOpen(false)
+                }}
+              >
+                Get Started
+              </Button>
             </div>
           </div>
         </div>

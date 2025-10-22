@@ -54,6 +54,10 @@ export default function Hero() {
                 <Button
                   size="lg"
                   className="bg-primary hover:bg-primary/90 text-lg px-8 hover:shadow-lg hover:shadow-primary/50 transition-all"
+                  onClick={() => {
+                    const demoSection = document.getElementById("demo")
+                    demoSection?.scrollIntoView({ behavior: "smooth" })
+                  }}
                 >
                   Start Detecting
                   <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -72,8 +76,8 @@ export default function Hero() {
             </div>
 
             {/* Right Demo - Laptop-style Detection Preview */}
-            <div className="hidden lg:flex w-full justify-center lg:justify-end lg:-mt-6">
-              <div className="relative w-lg flex flex-col gap-4">
+            <div className="w-full flex justify-center lg:justify-end lg:-mt-6">
+              <div className="relative w-full sm:w-4/5 md:w-3/4 lg:w-lg flex flex-col gap-4">
                 {/* Laptop lid */}
                 <div className="rounded-t-xl border border-border bg-card shadow-2xl overflow-hidden">
                   {/* Laptop header */}

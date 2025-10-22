@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react"
 
 export default function CTA() {
   return (
-    <section className="pt-8 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section className="pt-20 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl -z-10" />
 

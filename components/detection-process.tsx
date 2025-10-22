@@ -47,7 +47,7 @@ export default function DetectionProcess() {
   ]
 
   return (
-    <section className="pt-8 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section className="pt-8 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-muted/30">
       <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl -z-10" />
 
@@ -63,6 +63,13 @@ export default function DetectionProcess() {
           <p className="text-lg text-foreground/60 max-w-3xl mx-auto">
             Our advanced AI processes your media through multiple detection layers with real-time neural network analysis
           </p>
+        </div>
+
+        {/* Divider */}
+        <div className="mb-12 flex items-center gap-4">
+          <div className="flex-1 h-0.5 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+          <div className="text-primary/50 text-sm font-medium">Processing Steps</div>
+          <div className="flex-1 h-0.5 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
         </div>
 
         {/* Desktop View - Horizontal Flow */}
@@ -130,23 +137,29 @@ export default function DetectionProcess() {
         </div>
 
         {/* Mobile View - Vertical Flow */}
-        <div className="lg:hidden space-y-6">
+        <div className="lg:hidden space-y-4">
           {steps.map((step, index) => (
-            <div
-              key={index}
-              className={`p-6 rounded-xl border-2 transition-all duration-300 ${
-                activeStep === index
-                  ? `bg-linear-to-r ${step.color} border-transparent text-white`
-                  : "bg-card border-border"
-              }`}
-            >
-              <div className="flex items-start gap-4">
-                <div className="text-4xl">{step.icon}</div>
-                <div>
-                  <h3 className="font-semibold text-lg mb-1">{step.title}</h3>
-                  <p className={activeStep === index ? "text-white/80" : "text-foreground/60"}>{step.description}</p>
+            <div key={index}>
+              <div
+                className={`p-6 rounded-xl border-2 transition-all duration-300 ${
+                  activeStep === index
+                    ? `bg-linear-to-r ${step.color} border-transparent text-white`
+                    : "bg-card border-border"
+                }`}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="text-4xl">{step.icon}</div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-1">{step.title}</h3>
+                    <p className={activeStep === index ? "text-white/80" : "text-foreground/60"}>{step.description}</p>
+                  </div>
                 </div>
               </div>
+              {index < steps.length - 1 && (
+                <div className="flex justify-center py-2">
+                  <div className="text-xl text-primary/40">↓</div>
+                </div>
+              )}
             </div>
           ))}
         </div>
